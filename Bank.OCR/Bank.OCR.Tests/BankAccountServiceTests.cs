@@ -4,12 +4,10 @@
     using Infrastructure.Utilities.File;
     using Moq;
     using Moq.AutoMock;
-    using System;
-    using System.Linq;
     using Xunit;
     using TestStack.BDDfy;
-    using Moq.Language.Flow;
     using Bank.OCR.Application;
+    using Shouldly;
 
     public class BankAccountServiceTests
     {
@@ -65,7 +63,7 @@
                 .When(x => x.WhenICallProcessFile())
                 .Then(x => x.ThenTheFileReaderIsCalledCorrectly())
                 .And(x => x.ThenTheAccountNumberManagerIsCalledCorrectly())
-                .And(x => x.ThenTheResultIsAsExpected())
+                .And(x => x.ThenTheResultIsAsExpected(expectedEntries))
                 .BDDfy();
         }
 
@@ -76,7 +74,7 @@
 
         private void GivenAFileReader()
         {
-            _fileReader.Setup(x => x.ReadFile(_filename)).Returns(AccountEntries);
+            _fileReader.Setup(x => x.ReadFile(_filename)).ReturnsAsync(AccountEntries);
         }
 
         private void GivenAnAccountNumberManager()
@@ -103,11 +101,13 @@
             _accountNumberManager.Verify(x => x.ExtractAccountNumberFrom(It.IsAny<string[]>()), Times.Exactly(4));
         }
 
-        private void ThenTheResultIsAsExpected()
+        private void ThenTheResultIsAsExpected(int expectedCount)
         {
+            _result.Length.ShouldBe(expectedCount);
+
             for (int i = 0; i < _result.Length; i++)
             {
-                _result[i].SequenceEqual(AccountNumbers[i]);
+                _result[i].ShouldBe(AccountNumbers[i]);
             }
         }
     }

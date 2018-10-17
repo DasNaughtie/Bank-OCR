@@ -12,5 +12,8 @@
         public static string[] Seven = new[] { " _ ", "  |", "  |" };
         public static string[] Eight = new[] { " _ ", "|_|", "|_|" };
         public static string[] Nine = new[] { " _ ", "|_|", " _|" };
+
+        public const int RowsPerAccountEntry = 4;
+        public const int RowsPerDigit = 3;
     }
 }

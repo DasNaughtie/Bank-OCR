@@ -21,7 +21,7 @@
         [InlineData("random_nonsense", 0)]
         public void FileReaderSingleAccountEntryFileReturnsCorrectEntryDetails(string filename, int expectedLength)
         {
-            var actualResult = _fileReader.ReadFile(filename);
+            var actualResult = _fileReader.ReadFile(filename).Result;
 
             actualResult.Length.ShouldBe(expectedLength);
         }
@@ -29,7 +29,7 @@
         [Fact]
         public void FileReaderEmptyFilenameReturnsEmptyEntryDetails()
         {
-            var actualResult = _fileReader.ReadFile(string.Empty);
+            var actualResult = _fileReader.ReadFile(string.Empty).Result;
 
             actualResult.Length.ShouldBe(0);
         }
