@@ -20,7 +20,7 @@
 
         [Theory]
         [ClassData(typeof(SingleAccountEntryTestData))]
-        public void SingleEntryAccountNumberManagerReturnsExpectedAccountNo(string[] accountEntry, string expectedAccountNo)
+        public void AccountNumberManagerReturnsExpectedAccountNo(string[] accountEntry, string expectedAccountNo)
         {
             var actualAccountNumber = _accountManager.ExtractAccountNumberFrom(accountEntry);
 

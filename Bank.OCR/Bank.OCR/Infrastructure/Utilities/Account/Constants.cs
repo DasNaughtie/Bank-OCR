@@ -15,5 +15,6 @@
 
         public const int RowsPerAccountEntry = 4;
         public const int RowsPerDigit = 3;
+        public const int CheckSumValidator = 11;
     }
 }
