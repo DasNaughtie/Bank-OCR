@@ -7,11 +7,13 @@
     {
         private readonly IOCRFileReader _fileReader;
         private readonly IAccountNumberManager _accountNumberManager;
+        private readonly ICheckSumValidator _checkSumValidator;
 
-        public BankAccountService(IOCRFileReader fileReader, IAccountNumberManager accountNumberManager)
+        public BankAccountService(IOCRFileReader fileReader, IAccountNumberManager accountNumberManager, ICheckSumValidator checkSumValidator)
         {
             _fileReader = fileReader;
             _accountNumberManager = accountNumberManager;
+            _checkSumValidator = checkSumValidator;
         }
 
         public string[] ProcessFile(string filename)
@@ -30,7 +32,7 @@
                 counter++;
             }
 
-            return accountNumbers;
+            return _checkSumValidator.ValidateAccountNumbers(accountNumbers);
         }
     }
 }

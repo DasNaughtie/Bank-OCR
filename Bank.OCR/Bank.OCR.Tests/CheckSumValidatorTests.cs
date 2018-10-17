@@ -3,12 +3,15 @@
     using Infrastructure.Utilities.Account;
     using Moq.AutoMock;
     using Shouldly;
+    using System.Collections;
+    using System.Collections.Generic;
     using Xunit;
 
     public class CheckSumValidatorTests
     {
         private readonly AutoMocker _mocker;
-        private readonly CheckSumValidator _checkSumValidator;
+        private readonly ICheckSumValidator _checkSumValidator;
+        private string[] _actualAccountNumbers;
 
         public CheckSumValidatorTests()
         {
@@ -17,17 +20,47 @@
         }
 
         [Theory]
-        [InlineData("711111111", true)]
-        [InlineData("123456789", true)]
-        [InlineData("490867715", true)]
-        [InlineData("888888888", false)]
-        [InlineData("490067715", false)]
-        [InlineData("012345678", false)]
-        public void CheckSumValidatesAccountNumberCorrectly(string accountNumber, bool expectedOutcome)
+        [ClassData(typeof(CheckSumValidatorTestData))]
+        public void ValidateAccountNumbersReturnsExpected(string[] accountNumbers, string[] expectedAccountNumbers)
         {
-            var actualOutcome = _checkSumValidator.CheckSumIsValid(accountNumber);
+            _actualAccountNumbers = _checkSumValidator.ValidateAccountNumbers(accountNumbers);
 
-            actualOutcome.ShouldBe(expectedOutcome);
+            for (int i = 0; i < _actualAccountNumbers.Length; i++)
+            {
+                _actualAccountNumbers[i].ShouldBe(expectedAccountNumbers[i]);
+            }
+
+            _actualAccountNumbers.Length.ShouldBe(expectedAccountNumbers.Length);
         }
+    }
+
+    public class CheckSumValidatorTestData : IEnumerable<object[]>
+    {
+        public IEnumerator<object[]> GetEnumerator()
+        {
+            yield return new object[]
+            {
+                new[]
+                {
+                    "711111111",
+                    "123456789",
+                    "490867715",
+                    "888888888",
+                    "490067715",
+                    "012345678"
+                },
+                new[]
+                {
+                    "711111111",
+                    "123456789",
+                    "490867715",
+                    "888888888 ERR",
+                    "490067715 ERR",
+                    "012345678 ERR"
+                }
+            };
+        }
+
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 }

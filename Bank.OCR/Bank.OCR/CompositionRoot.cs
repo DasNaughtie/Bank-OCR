@@ -17,8 +17,9 @@
         {
             var fileReader = new OCRFileReader();
             var accountNumberManager = new AccountNumberManager();
+            var checkSumValidator = new CheckSumValidator();
 
-            BankAccountService = new BankAccountService(fileReader, accountNumberManager);
+            BankAccountService = new BankAccountService(fileReader, accountNumberManager, checkSumValidator);
         }
     }
 }
