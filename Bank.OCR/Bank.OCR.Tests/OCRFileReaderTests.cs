@@ -43,6 +43,8 @@
             var filename = _fileReader.WriteToFile(accountNumbers).Result;
 
             File.Exists(filename).ShouldBe(true);
+
+            File.Delete(filename);
         }
     }
 }
