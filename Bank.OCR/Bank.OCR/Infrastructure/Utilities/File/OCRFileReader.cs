@@ -13,7 +13,6 @@
 
     public class OCRFileReader : IOCRFileReader
     {
-        private const int MaximumAccountEntries = 500;
         private string _basePath;
 
         public OCRFileReader()
@@ -33,7 +32,7 @@
             if (!File.Exists(filename))
                 return new string[] { };
 
-            var accountEntries = new string[Constants.RowsPerAccountEntry * MaximumAccountEntries];
+            var accountEntries = new string[Constants.RowsPerAccountEntry * Constants.MaximumAccountEntries];
 
             accountEntries = await File.ReadAllLinesAsync(filename);
 

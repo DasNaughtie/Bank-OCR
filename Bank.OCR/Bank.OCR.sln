@@ -5,7 +5,12 @@ VisualStudioVersion = 15.0.28010.2016
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bank.OCR.Tests", "Bank.OCR.Tests\Bank.OCR.Tests.csproj", "{B5D2A1A9-4856-4B5F-8CEE-FB2F7C2C2604}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bank.OCR", "Bank.OCR\Bank.OCR.csproj", "{A585AD5F-F97C-4EE2-B7B4-836F584C4AE8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bank.OCR", "Bank.OCR\Bank.OCR.csproj", "{A585AD5F-F97C-4EE2-B7B4-836F584C4AE8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3DE602B1-ADAE-4FEE-89DA-C0FD7AF24C76}"
+	ProjectSection(SolutionItems) = preProject
+		ReadMe.txt = ReadMe.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

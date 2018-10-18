@@ -1,5 +1,6 @@
 ﻿namespace Bank.OCR.Application
 {
+    using Infrastructure.Utilities;
     using Infrastructure.Utilities.Account;
     using Infrastructure.Utilities.File;
 

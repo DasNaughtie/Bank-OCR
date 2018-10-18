@@ -1,4 +1,4 @@
-﻿namespace Bank.OCR.Infrastructure.Utilities.Account
+﻿namespace Bank.OCR.Infrastructure.Utilities
 {
     public class Constants
     {
@@ -16,5 +16,6 @@
         public const int RowsPerAccountEntry = 4;
         public const int RowsPerDigit = 3;
         public const int CheckSumValidator = 11;
+        public const int MaximumAccountEntries = 500;
     }
 }

@@ -1,7 +1,5 @@
 ﻿namespace Bank.OCR.Infrastructure.Utilities.Account
 {
-    using System;
-
     public interface ICheckSumValidator
     {
         string[] ValidateAccountNumbers(string[] accountNumbers);
