@@ -19,7 +19,7 @@
         }
 
         [Theory]
-        [ClassData(typeof(SingleAccountEntryTestData))]
+        [ClassData(typeof(AccountEntryTestData))]
         public void AccountNumberManagerReturnsExpectedAccountNo(string[] accountEntry, string expectedAccountNo)
         {
             var actualAccountNumber = _accountManager.ExtractAccountNumberFrom(accountEntry);
@@ -28,7 +28,7 @@
         }
     }
 
-    public class SingleAccountEntryTestData : IEnumerable<object[]>
+    public class AccountEntryTestData : IEnumerable<object[]>
     {
         public IEnumerator<object[]> GetEnumerator()
         {

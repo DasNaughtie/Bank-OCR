@@ -1,5 +1,6 @@
 ﻿namespace Bank.OCR.Tests
 {
+    using System.IO;
     using Bank.OCR.Infrastructure.Utilities.File;
     using Moq.AutoMock;
     using Shouldly;
@@ -17,9 +18,9 @@
         }
 
         [Theory]
-        [InlineData(@"C:\Dev\Bank.OCR\Bank.OCR.Tests\TestDataFile.txt", 4)]
+        [InlineData(@"C:\Dev\Bank.OCR\Bank.OCR.Tests\TestData\TestDataFile.txt", 4)]
         [InlineData("random_nonsense", 0)]
-        public void FileReaderSingleAccountEntryFileReturnsCorrectEntryDetails(string filename, int expectedLength)
+        public void FileReaderAccountEntryFileReturnsCorrectEntryDetails(string filename, int expectedLength)
         {
             var actualResult = _fileReader.ReadFile(filename).Result;
 
@@ -32,6 +33,16 @@
             var actualResult = _fileReader.ReadFile(string.Empty).Result;
 
             actualResult.Length.ShouldBe(0);
+        }
+
+        [Fact]
+        public void FileWriterAccountsSavedCorrectly()
+        {
+            var accountNumbers = new string[] {"111111111", "222222222", "333333333"};
+
+            var filename = _fileReader.WriteToFile(accountNumbers).Result;
+
+            File.Exists(filename).ShouldBe(true);
         }
     }
 }

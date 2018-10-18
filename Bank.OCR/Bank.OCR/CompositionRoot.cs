@@ -15,7 +15,10 @@
 
         private void Compose()
         {
-            var fileReader = new OCRFileReader();
+            var basePath = @"c:\Dev";
+
+            var fileReader = new OCRFileReader(basePath);
+
             var accountNumberManager = new AccountNumberManager();
             var checkSumValidator = new CheckSumValidator();
 
