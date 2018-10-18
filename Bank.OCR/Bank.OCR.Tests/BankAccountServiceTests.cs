@@ -51,7 +51,7 @@
         }
 
         [Theory]
-        [InlineData(@"C:\Dev\Bank.OCR\Bank.OCR.Tests\TestData\MultiAccountTestDataFile.txt", 4)]
+        [InlineData(@"C:\Dev\Bank-OCR\Bank.OCR\Bank.OCR.Tests\TestData\MultiAccountTestDataFile.txt", 4)]
         public void BankAccountServiceProcessFileCorrectly(string filename, int expectedEntries)
         {
             this.Given(x => x.GivenAFileName(filename))
@@ -66,7 +66,7 @@
         }
 
         [Theory]
-        [InlineData(@"C:\Dev\Bank.OCR\Bank.OCR.Tests\TestData\CheckSumValidationTestDataFile.txt", 4)]
+        [InlineData(@"C:\Dev\Bank-OCR\Bank.OCR\Bank.OCR.Tests\TestData\CheckSumValidationTestDataFile.txt", 4)]
         public void BankAccountServiceFailedAccountNumbersReturnsCorrectly(string filename, int expectedEntries)
         {
             this.Given(x => x.GivenAFileName(filename))

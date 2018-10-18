@@ -18,7 +18,7 @@
         }
 
         [Theory]
-        [InlineData(@"C:\Dev\Bank.OCR\Bank.OCR.Tests\TestData\TestDataFile.txt", 4)]
+        [InlineData(@"C:\Dev\Bank-OCR\Bank.OCR\Bank.OCR.Tests\TestData\TestDataFile.txt", 4)]
         [InlineData("random_nonsense", 0)]
         public void FileReaderAccountEntryFileReturnsCorrectEntryDetails(string filename, int expectedLength)
         {
